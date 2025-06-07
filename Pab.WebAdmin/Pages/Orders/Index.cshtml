@@ -1,0 +1,38 @@
+﻿@page
+@model Pab.WebAdmin.Pages.Orders.IndexModel
+@{
+    ViewData["Title"] = "Zamówienia";
+}
+
+<h1>Zamówienia</h1>
+
+<p>
+    <a asp-page="Create" class="btn btn-primary">Dodaj nowe zamówienie</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Użytkownik</th>
+            <th>Data</th>
+            <th>Kwota</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var o in Model.Orders)
+        {
+            <tr>
+                <td>@o.Id</td>
+                <td>@o.UserId</td>
+                <td>@o.OrderDate.ToLocalTime().ToString("g")</td>
+                <td>@o.TotalAmount</td>
+                <td>
+                    <a asp-page="Edit" asp-route-id="@o.Id">Edytuj</a> |
+                    <a asp-page="Delete" asp-route-id="@o.Id">Usuń</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

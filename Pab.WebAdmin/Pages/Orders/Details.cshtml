@@ -1,0 +1,48 @@
+﻿@page "{id:int}"
+@model Pab.WebAdmin.Pages.Orders.DetailsModel
+@{
+    ViewData["Title"] = "Szczegóły zamówienia";
+}
+
+<h2>Szczegóły Zamówienia</h2>
+
+<dl class="row">
+    <dt class="col-sm-2">Id zamówienia</dt>
+    <dd class="col-sm-10">@Model.Order.Id</dd>
+
+    <dt class="col-sm-2">Id użytkownika</dt>
+    <dd class="col-sm-10">@Model.Order.UserId</dd>
+
+    <dt class="col-sm-2">Data zamówienia</dt>
+    <dd class="col-sm-10">@Model.Order.OrderDate.ToString("yyyy-MM-dd HH:mm")</dd>
+
+    <dt class="col-sm-2">Kwota łącznie</dt>
+    <dd class="col-sm-10">@Model.Order.TotalAmount.ToString("C")</dd>
+</dl>
+
+<h4>Pozycje zamówienia</h4>
+<table class="table table-sm table-bordered">
+    <thead>
+        <tr>
+            <th>ProduktId</th>
+            <th>Ilość</th>
+            <th>Cena jedn.</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Order.Items)
+        {
+            <tr>
+                <td>@item.ProductId</td>
+                <td>@item.Quantity</td>
+                <td>@item.UnitPrice.ToString("C")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    <a asp-page="./Index" class="btn btn-secondary">Powrót do listy</a>
+    <a asp-page="./Edit" asp-route-id="@Model.Order.Id" class="btn btn-primary">Edytuj</a>
+    <a asp-page="./Delete" asp-route-id="@Model.Order.Id" class="btn btn-danger">Usuń</a>
+</p>

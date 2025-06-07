@@ -1,0 +1,52 @@
+﻿@page
+@model Pab.WebAdmin.Pages.Orders.CreateModel
+@{
+    ViewData["Title"] = "Nowe zamówienie";
+}
+
+<h1>Dodaj zamówienie</h1>
+
+<form method="post">
+    <div class="mb-3">
+        <label asp-for="Input.UserId" class="form-label">UserId</label>
+        <input asp-for="Input.UserId" class="form-control" />
+    </div>
+
+    <h5>Pozycje:</h5>
+    <table class="table">
+        <thead>
+            <tr><th>ProductId</th><th>Ilość</th></tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Input.Items.Count; i++)
+            {
+                <tr>
+                    <td><input asp-for="Input.Items[@i].ProductId" class="form-control" /></td>
+                    <td><input asp-for="Input.Items[@i].Quantity" class="form-control" /></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="addRow();">
+        Dodaj pozycję
+    </button>
+    <br /><br />
+    <button type="submit" class="btn btn-success">Zapisz</button>
+</form>
+
+@section Scripts {
+    <script type="text/javascript">
+        function addRow() {
+            // Razor wstawi tutaj np. "0" lub "1"
+            var idx = @Model.Input.Items.Count;
+
+            var table = document.querySelector('table tbody');
+            var row = document.createElement('tr');
+            row.innerHTML =
+                '<td><input name="Input.Items[' + idx + '].ProductId" class="form-control" /></td>' +
+                '<td><input name="Input.Items[' + idx + '].Quantity" class="form-control" /></td>';
+            table.appendChild(row);
+        }
+    </script>
+}

@@ -1,0 +1,6 @@
+@Pab.API_HostAddress = http://localhost:5130
+
+GET {{Pab.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

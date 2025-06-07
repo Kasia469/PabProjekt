@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="HotChocolate.AspNetCore" Version="15.1.5" />
+	  <PackageReference Include="HotChocolate.Data" Version="15.1.5" />
+	  <PackageReference Include="HotChocolate.Data.EntityFramework" Version="15.1.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Pab.Application\Pab.Application.csproj" />
+    <ProjectReference Include="..\Pab.Domain\Pab.Domain.csproj" />
+    <ProjectReference Include="..\Pab.Infrastructure\Pab.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

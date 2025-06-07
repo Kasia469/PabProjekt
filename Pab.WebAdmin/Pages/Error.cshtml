@@ -1,0 +1,15 @@
+﻿@page
+@model Pab.WebAdmin.Pages.ErrorModel
+@{
+    ViewData["Title"] = "Błąd";
+}
+
+<h1 class="text-danger">Wystąpił błąd</h1>
+<p class="text-danger">Przepraszamy, coś poszło nie tak.</p>
+
+@if (Model.ShowRequestId)
+{
+    <p>
+        <strong>ID żądania:</strong> <code>@Model.RequestId</code>
+    </p>
+}

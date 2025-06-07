@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["Title"] - Pab.WebAdmin</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" asp-page="/Index">Pab.WebAdmin</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" asp-page="/Index">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-page="/Products/Index">Produkty</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-page="/Orders/Index">Zamówienia</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-page="/Account/Logout">Wyloguj</a></li>
+                    </ul>
+
+                    <ul class="navbar-nav">
+                        @{
+                            var token = Context.Session.GetString("JWToken");
+                        }
+                        @if (string.IsNullOrEmpty(token))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-page="/Account/Login">Zaloguj</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-page="/Account/Logout">Wyloguj</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container mt-4">
+        @RenderBody()
+    </div>
+
+    <footer class="border-top footer text-muted mt-5">
+        <div class="container">
+            &copy; 2025 – Pab.WebAdmin
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

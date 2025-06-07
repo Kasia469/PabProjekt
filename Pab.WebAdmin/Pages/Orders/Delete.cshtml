@@ -1,0 +1,26 @@
+﻿@page "{id:int}"
+@model Pab.WebAdmin.Pages.Orders.DeleteModel
+@{
+    ViewData["Title"] = "Usuń zamówienie";
+}
+
+<h2>Usuń Zamówienie</h2>
+
+<h4>Czy na pewno chcesz usunąć to zamówienie?</h4>
+
+<dl class="row">
+    <dt class="col-sm-2">Id zamówienia</dt>
+    <dd class="col-sm-10">@Model.Order.Id</dd>
+
+    <dt class="col-sm-2">Id użytkownika</dt>
+    <dd class="col-sm-10">@Model.Order.UserId</dd>
+
+    <dt class="col-sm-2">Data zamówienia</dt>
+    <dd class="col-sm-10">@Model.Order.OrderDate.ToString("yyyy-MM-dd HH:mm")</dd>
+</dl>
+
+<form method="post">
+    <input type="hidden" asp-for="Order.Id" />
+    <button type="submit" class="btn btn-danger">Usuń</button>
+    <a asp-page="./Index" class="btn btn-secondary">Anuluj</a>
+</form>

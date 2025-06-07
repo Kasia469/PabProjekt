@@ -1,0 +1,44 @@
+﻿@page
+@model Pab.WebAdmin.Pages.Products.IndexModel
+@{
+    ViewData["Title"] = "Lista produktów";
+}
+
+<h2>Lista produktów</h2>
+<hr />
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+
+<p>
+    <a asp-page="Create" class="btn btn-success">Dodaj nowy</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nazwa</th>
+            <th>Cena</th>
+            <th>Ilość</th>
+            <th></th> 
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Products)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Price</td>
+                <td>@item.Stock</td>
+                <td>
+                    <a asp-page="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-primary">Edytuj</a>
+                    <a asp-page="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Usuń</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

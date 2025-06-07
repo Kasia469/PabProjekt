@@ -1,0 +1,29 @@
+﻿@page "{id:int}"
+@model Pab.WebAdmin.Pages.Orders.EditModel
+@{
+    ViewData["Title"] = "Edytuj zamówienie";
+}
+
+<h2>Edytuj Zamówienie</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="Order.Id" />
+
+    <div class="mb-3">
+        <label asp-for="Order.UserId" class="form-label">Id użytkownika</label>
+        <input asp-for="Order.UserId" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Order.OrderDate" class="form-label">Data zamówienia</label>
+        <input asp-for="Order.OrderDate" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Order.TotalAmount" class="form-label">Kwota całkowita</label>
+        <input asp-for="Order.TotalAmount" class="form-control" />
+    </div>
+    <!-- Jeśli chcesz edytować tylko nagłówek zamówienia (UserId/Kwota), ten kod wystarczy.
+         Pozycje zamówienia mogłyby być edytowane na osobnej stronie, jeśli potrzebujesz. -->
+
+    <button type="submit" class="btn btn-primary">Zapisz</button>
+    <a asp-page="./Index" class="btn btn-secondary">Anuluj</a>
+</form>
